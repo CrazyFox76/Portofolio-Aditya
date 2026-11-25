@@ -56,7 +56,7 @@ export default function Hero() {
 					{t("hero.firstName")} {t("hero.lastName")}
 				</h1>
 
-				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-top left-[8%] top-[24%] max-md:top-[18%]`} {...rise(0.1)}>
+				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-top left-[14%] top-[24%] max-md:top-[18%]`} {...rise(0.1)}>
 					{t("hero.firstName")}
 				</motion.span>
 				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-bottom right-[6%] top-[44%] max-md:top-[30%]`} {...rise(0.2)}>

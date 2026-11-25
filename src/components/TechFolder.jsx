@@ -7,7 +7,9 @@ const BACK_PATH =
 	"M0 22A22 22 0 0 1 22 0L104 0C128 0 130 26 156 26L318 26A22 22 0 0 1 340 48L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z";
 
 const EASE = "cubic-bezier(.2,.8,.2,1)";
-const TILE = 101;
+// Each logo sits in an equal, invisible box so wide (Docker) and tall (Figma) marks look balanced.
+const TILE = 56;
+const GAP = 60;
 
 /** items: [{ name, logo, bg }] */
 export default function TechFolder({ title, items }) {
@@ -15,6 +17,7 @@ export default function TechFolder({ title, items }) {
 	const ref = useRef(null);
 	const [entered, setEntered] = useState(false);
 	const [hover, setHover] = useState(false);
+	const [active, setActive] = useState(-1);
 
 	useEffect(() => {
 		const io = new IntersectionObserver(
@@ -75,31 +78,65 @@ export default function TechFolder({ title, items }) {
 			<div className="pointer-events-none absolute inset-0">
 				{items.map((item, i) => {
 					const o = i - mid;
-					const x = o * (hover ? 52 : 44);
+					const x = o * (hover ? GAP + 4 : GAP);
 					// Resting fan: tiles rise slightly to the right and peek above the pocket; hover spreads them.
-					const y = hover ? -34 - Math.abs(o) * 2 : -20 - o * 3;
-					const r = o * (hover ? 6 : 4);
+					// Gentle arc: centre logos sit a little higher than the ends; hover lifts the whole row.
+					const y = (hover ? -8 : 0) + o * o * 1.2;
+					const r = o * 2;
+					// The tile under the cursor rises out of the stack on its own and shows its name.
+					const lifted = i === active;
+					const ty = lifted ? y - 28 : y;
+					const tr = lifted ? r * 0.3 : r;
 					return (
 						<div
 							key={item.name}
-							className="absolute left-1/2 top-[42px] rounded-[26px] [backface-visibility:hidden]"
+							className="pointer-events-auto absolute left-1/2 top-[30px] cursor-pointer rounded-[14px] [backface-visibility:hidden]"
+							onMouseEnter={() => setActive(i)}
+							onMouseLeave={() => setActive(-1)}
 							style={{
 								width: TILE,
 								height: TILE,
 								marginLeft: -TILE / 2,
-								zIndex: i,
+								zIndex: lifted ? 15 : i,
 								opacity: entered ? 1 : 0,
-								transform: entered ? `translate3d(${x}px, ${y}px, 0) rotate(${r}deg)` : `translate3d(${o * 30.3}px, 80px, 0)`,
-								transition: `transform 0.9s ${EASE}, opacity .5s`,
+								transform: entered
+									? `translate3d(${x}px, ${ty}px, 0) rotate(${tr}deg) scale(${lifted ? 1.08 : 1})`
+									: `translate3d(${o * 30.3}px, 80px, 0)`,
+								transition: `transform ${hover ? "0.45s" : "0.9s"} ${EASE}, opacity .5s`,
 								transitionDelay: entered && !hover ? `${0.35 + i * 0.08}s` : "0s",
 							}}
 						>
-							<div
-								className="grid h-full w-full place-items-center overflow-hidden rounded-[inherit]"
-								style={{ background: item.bg, boxShadow: "0 18px 40px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.14)" }}
-							>
-								<img alt="" className="technology-folder-logo" src={item.logo} />
+							{/* Free-standing logo in its own brand colour (no tile), with the statement's glare sweep. */}
+							<div className="grid h-full w-full place-items-center">
+								<span
+									className="shine-art"
+									style={{ "--art": `url(${item.logo})`, width: "100%", height: "100%", transform: "none" }}
+								>
+									<img
+										alt=""
+										src={item.logo}
+										draggable="false"
+										className="shine-img"
+										style={{
+											filter: `${item.white ? "brightness(0) invert(1) " : ""}drop-shadow(0 10px 18px rgba(0,0,0,.55))`,
+										}}
+									/>
+									<span className="shine-glare" style={{ animationDelay: `${i * 0.35}s` }} aria-hidden="true" />
+								</span>
 							</div>
+							<span
+								className="pointer-events-none absolute bottom-full left-1/2 mb-2.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-xs font-medium leading-4 backdrop-blur-[8px]"
+								style={{
+									background: "rgba(0,0,0,.55)",
+									borderColor: "rgba(255,255,255,.08)",
+									color: "#fff",
+									opacity: lifted ? 1 : 0,
+									transform: `translateX(-50%) translateY(${lifted ? 0 : 6}px)`,
+									transition: `opacity .25s ease, transform .35s ${EASE}`,
+								}}
+							>
+								{item.name}
+							</span>
 						</div>
 					);
 				})}
@@ -135,10 +172,12 @@ export default function TechFolder({ title, items }) {
 					aria-hidden="true"
 				>
 					{items.map((item) => (
-						<span key={item.name} className="block h-[22px] w-[22px] overflow-hidden rounded-[7px]">
-							<span className="grid h-full w-full place-items-center" style={{ background: item.bg }}>
-								<img alt="" className="h-[60%] w-[60%] object-contain [filter:brightness(0)_invert()]" src={item.logo} />
-							</span>
+						<span key={item.name} className="grid h-[22px] w-[22px] place-items-center">
+							<img
+								alt=""
+								className={`h-[80%] w-[80%] object-contain ${item.white ? "[filter:brightness(0)_invert()]" : ""}`}
+								src={item.logo}
+							/>
 						</span>
 					))}
 				</span>

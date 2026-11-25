@@ -4,21 +4,26 @@ import { useLanguage } from "../i18n/LanguageContext";
 
 const CV_URL = "https://drive.google.com/file/d/1sHFfWWKaJ71aYx7htaa3DDYQFMHrhH-0/view?usp=drivesdk";
 
-// Logos are the existing SVGs in public/; tile colours are dark tints of each brand colour.
+// Logos: Simple Icons SVGs (CC0) in public/icons/.
+// Logos shown in their own brand colours (no tile). GitHub's mark is black, so it is drawn white on the dark card.
 const TOOLS = [
-	{ name: "React", logo: "/reactjs.svg", bg: "#163b4b" },
-	{ name: "JavaScript", logo: "/javascript.svg", bg: "#5c5212" },
-	{ name: "Tailwind CSS", logo: "/tailwind.svg", bg: "#0e4a5c" },
-	{ name: "Node.js", logo: "/nodejs.svg", bg: "#22401f" },
-	{ name: "Firebase", logo: "/firebase.svg", bg: "#7a3d0c" },
-	{ name: "Vercel", logo: "/icons/vercel-mark.svg", bg: "#171719" },
+	{ name: "GitHub", logo: "/icons/github.svg", white: true },
+	{ name: "Claude Code", logo: "/icons/claudecode.svg" },
+	{ name: "Node.js", logo: "/icons/nodedotjs.svg" },
+	{ name: "Docker", logo: "/icons/docker.svg" },
+	{ name: "Git", logo: "/icons/git.svg" },
+	{ name: "Arch Linux", logo: "/icons/archlinux.svg" },
 ];
 
-// Placeholder project sheets until the static project data lands (phase 2).
+// Project sheets (the last one sits on top). Moro Go uses a screenshot of its live landing page.
 const PROJECTS = [
-	{ name: "SPK Supplier Moro Go", meta: "Laravel · React", href: "#Portofolio" },
-	{ name: "PPDB SMPN 4", meta: "Web app", href: "#Portofolio" },
-	{ name: "Equran Digital", meta: "Web app", href: "#Portofolio" },
+	{
+		name: "SPK Supplier Moro Go",
+		meta: "Laravel · React · SAW",
+		href: "https://morogo-spk-saw-production.up.railway.app/",
+		image: "/projects/morogo-spk/desktop-home.webp",
+		external: true,
+	},
 ];
 
 export default function FolderRow() {
@@ -33,6 +38,7 @@ export default function FolderRow() {
 			<div className="hero-folder-slot">
 				<GlassFolder
 					title={t("folders.projects.title")}
+					art="/folders/glass-1.webp"
 					meta={t("folders.projects.meta")}
 					openLabel={t("folders.projects.open")}
 					sheets={PROJECTS}
@@ -41,6 +47,7 @@ export default function FolderRow() {
 			<div className="hero-folder-slot">
 				<GlassFolder
 					title={t("folders.projectsBuilt.title")}
+					art="/folders/glass-2.webp"
 					meta={t("folders.projectsBuilt.meta")}
 					openLabel={t("folders.projectsBuilt.open")}
 					sheets={[sheet("about", "#About"), sheet("experience", "#experience"), sheet("skills", "#skills")]}
@@ -49,6 +56,7 @@ export default function FolderRow() {
 			<div className="hero-folder-slot">
 				<GlassFolder
 					title={t("folders.idea.title")}
+					art="/folders/glass-3.webp"
 					meta={t("folders.idea.meta")}
 					openLabel={t("folders.idea.open")}
 					sheets={[sheet("start", "#Contact"), sheet("cv", CV_URL, { external: true })]}

@@ -1,13 +1,13 @@
-import { LayoutGrid, Folder, Route, Users, MessageCircle } from "lucide-react";
+import { FilesIcon, SettingsIcon, MapsIcon, ContactsIcon, MessagesIcon } from "./DockIcons";
 import { useLanguage } from "../i18n/LanguageContext";
 
 // Measurements: design-system/hero-spec.md ("Dock header").
 const ITEMS = [
-	{ key: "projects", href: "#Portofolio", Icon: LayoutGrid, tile: "from-[#4FA3FF] to-[#1D6FF2]" },
-	{ key: "skills", href: "#skills", Icon: Folder, tile: "from-[#6366F1] to-[#3730A3]" },
-	{ key: "experience", href: "#experience", Icon: Route, tile: "from-[#FF9A3D] to-[#F2600C]" },
-	{ key: "about", href: "#About", Icon: Users, tile: "from-[#FF5A6E] to-[#E11D48]" },
-	{ key: "contact", href: "#Contact", Icon: MessageCircle, tile: "from-[#4ADE80] to-[#16A34A]" },
+	{ key: "projects", href: "#Portofolio", Icon: FilesIcon },
+	{ key: "skills", href: "#skills", Icon: SettingsIcon },
+	{ key: "experience", href: "#experience", Icon: MapsIcon },
+	{ key: "about", href: "#About", Icon: ContactsIcon },
+	{ key: "contact", href: "#Contact", Icon: MessagesIcon },
 ];
 
 function DockLink({ href, label, children, className = "" }) {
@@ -41,12 +41,10 @@ export default function Dock() {
 				</DockLink>
 
 				<nav aria-label="Main navigation" className="flex items-center gap-[2px]">
-					{ITEMS.map(({ key, href, Icon, tile }) => (
+					{ITEMS.map(({ key, href, Icon }) => (
 						<DockLink key={key} href={href} label={t(`nav.${key}`)}>
-							<span
-								className={`flex h-10 w-10 items-center justify-center rounded-[11px] bg-gradient-to-b ${tile} shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]`}
-							>
-								<Icon className="h-5 w-5 text-white" strokeWidth={2.4} aria-hidden="true" />
+							<span className="block h-10 w-10 overflow-hidden rounded-[11px] shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+								<Icon />
 							</span>
 						</DockLink>
 					))}

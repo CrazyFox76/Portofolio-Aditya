@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Code2, Github, Network } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 /*
@@ -15,11 +14,12 @@ import { useLanguage } from "../i18n/LanguageContext";
  *   0.88-0.95   the "Let's build" / "and" prefixes open up
  */
 
+// Statement icons: free-standing HD cutouts (no tile) with a periodic glare sweep.
 const FRONT = [
-	{ tile: "black", Glyph: Code2, tilt: -5 },
-	{ tile: "sky", Glyph: Network, tilt: 5 },
-	{ tile: "liquid", Glyph: Github, tilt: 5 },
-	{ tile: "marble", logo: "/reactjs.svg", tilt: -4 },
+	{ src: "/icons/statement/chef.webp", pixel: true, tilt: -5 },
+	{ src: "/icons/statement/terminal.webp", tilt: 5 },
+	{ src: "/icons/statement/doge.webp", pixel: true, tilt: 4 },
+	{ src: "/icons/statement/dino.webp", pixel: true, tilt: -4 },
 ];
 const LETTERS = ["A", "D", "I", "T", "Y", "A"];
 const LETTER_TILE = ["sky", "black", "sky", "black", "sky", "black"];
@@ -42,12 +42,12 @@ function Tile({ kind, children }) {
 	return <span className={`glossy-tile glossy-tile--${kind}`}>{children}</span>;
 }
 function FrontTile({ i }) {
-	const { tile, Glyph, logo } = FRONT[i];
+	const { src, pixel } = FRONT[i];
 	return (
-		<Tile kind={tile}>
-			{Glyph ? <Glyph className="glossy-glyph" color={tile === "sky" ? "#ff7a1a" : "#e9e9ee"} strokeWidth={2.6} /> : null}
-			{logo ? <img src={logo} alt="" className="glossy-glyph object-contain [filter:brightness(0)_invert()_drop-shadow(0_0.04em_0.03em_rgba(0,0,0,0.35))]" /> : null}
-		</Tile>
+		<span className="shine-art" style={{ "--art": `url(${src})` }}>
+			<img src={src} alt="" className={`shine-img${pixel ? " shine-img--pixel" : ""}`} draggable="false" />
+			<span className="shine-glare" style={{ animationDelay: `${i * 0.45}s` }} aria-hidden="true" />
+		</span>
 	);
 }
 function LetterTile({ i }) {

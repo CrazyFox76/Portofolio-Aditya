@@ -1,82 +1,56 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from 'react';
 import "./index.css";
-import Home from "./Pages/Home";
+import Hero from "./sections/Hero";
+import FolderRow from "./sections/FolderRow";
+import BrandStory from "./sections/BrandStory";
 import About from "./Pages/About";
 import AnimatedBackground from "./components/Background";
-import Navbar from "./components/Navbar";
+import Dock from "./components/Dock";
+import Footer from "./components/Footer";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import Portofolio from "./Pages/Portofolio";
 import ContactPage from "./Pages/Contact";
 import ProjectDetails from "./components/ProjectDetail";
-import WelcomeScreen from "./Pages/WelcomeScreen";
-import { AnimatePresence } from 'framer-motion';
-import notfound from "./Pages/404";
 import NotFoundPage from "./Pages/404";
+import { supabase } from "./supabase";
 
-const LandingPage = ({ showWelcome, setShowWelcome }) => {
-  return (
-    <>
-      <AnimatePresence mode="wait">
-        {showWelcome && (
-          <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
-        )}
-      </AnimatePresence>
-
-      {!showWelcome && (
-        <>
-          <Navbar />
-          <AnimatedBackground />
-          <Home />
-          <About />
-          <Portofolio />
-          <ContactPage />
-          <footer>
-            <center>
-              <hr className="my-3 border-gray-400 opacity-15 sm:mx-auto lg:my-6 text-center" />
-              <span className="block text-sm pb-4 text-gray-500 text-center dark:text-gray-400">
-                © 2026{" "}
-                <a href="www.Aditya.com" className="hover:underline">
-                  Aditya Pratama™
-                </a>
-                . All Rights Reserved.
-              </span>
-            </center>
-          </footer>
-        </>
-      )}
-    </>
-  );
-};
+const LandingPage = () => (
+  <>
+    <Dock />
+    <Hero />
+    <FolderRow />
+    <BrandStory />
+    {/* Legacy sections, replaced phase by phase. They need Supabase until moved to static data. */}
+    {supabase && (
+      <>
+        <AnimatedBackground />
+        <About />
+        <Portofolio />
+        <ContactPage />
+      </>
+    )}
+    <Footer />
+  </>
+);
 
 const ProjectPageLayout = () => (
   <>
     <ProjectDetails />
-    <footer>
-      <center>
-        <hr className="my-3 border-gray-400 opacity-15 sm:mx-auto lg:my-6 text-center" />
-        <span className="block text-sm pb-4 text-gray-500 text-center dark:text-gray-400">
-          © 2026{" "}
-          <a href="www.aditya.my.id" className="hover:underline">
-            Aditya Pratama™
-          </a>
-          . All Rights Reserved.
-        </span>
-      </center>
-    </footer>
+    <Footer />
   </>
 );
 
 function App() {
-  const [showWelcome, setShowWelcome] = useState(true);
-
   return (
+    <LanguageProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage showWelcome={showWelcome} setShowWelcome={setShowWelcome} />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/project/:id" element={<ProjectPageLayout />} />
          <Route path="*" element={<NotFoundPage />} /> {/* Ini route 404 */}
       </Routes>
     </BrowserRouter>
+    </LanguageProvider>
   );
 }
 

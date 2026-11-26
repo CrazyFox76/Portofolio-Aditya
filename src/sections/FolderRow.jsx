@@ -15,6 +15,24 @@ const TOOLS = [
 	{ name: "Arch Linux", logo: "/icons/archlinux.svg" },
 ];
 
+// Certificate sheets (the last one sits on top); each opens its PDF in a new tab.
+const CERTIFICATES = [
+	{
+		name: "Seminar Gali Potensi",
+		meta: "STIKOM El Rahma · 2024",
+		href: "/certificates/seminar-gali-potensi-2024.pdf",
+		image: "/certificates/seminar-gali-potensi-2024.webp",
+		external: true,
+	},
+	{
+		name: "Prompt Engineering · Google AI Studio",
+		meta: "Workshop · 2026",
+		href: "/certificates/prompt-engineering-google-ai-studio-2026.pdf",
+		image: "/certificates/prompt-engineering-google-ai-studio-2026.webp",
+		external: true,
+	},
+];
+
 // Project sheets (the last one sits on top). Moro Go uses a screenshot of its live landing page.
 const PROJECTS = [
 	{
@@ -46,11 +64,11 @@ export default function FolderRow() {
 			</div>
 			<div className="hero-folder-slot">
 				<GlassFolder
-					title={t("folders.projectsBuilt.title")}
+					title={t("folders.certificates.title")}
 					art="/folders/glass-2.webp"
-					meta={t("folders.projectsBuilt.meta")}
-					openLabel={t("folders.projectsBuilt.open")}
-					sheets={[sheet("about", "#About"), sheet("experience", "#experience"), sheet("skills", "#skills")]}
+					meta={t("folders.certificates.meta")}
+					openLabel={t("folders.certificates.open")}
+					sheets={CERTIFICATES}
 				/>
 			</div>
 			<div className="hero-folder-slot">

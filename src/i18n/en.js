@@ -17,7 +17,7 @@ const en = {
 	folders: {
 		toolsTitle: "The tools I build with.",
 		projects: { title: "Projects", meta: "Open the folder. Explore the details.", open: "Open the Projects folder" },
-		projectsBuilt: { title: "15+ projects built", meta: "Learning by building, project by project.", open: "Open the projects built folder" },
+		certificates: { title: "Certificates", meta: "Proof of learning, one at a time.", open: "Open the Certificates folder" },
 		idea: { title: "Got an idea?", meta: "Let's build it together.", open: "Open the Got an idea? folder" },
 		sheets: {
 			about: ["Meet Aditya", "About"],

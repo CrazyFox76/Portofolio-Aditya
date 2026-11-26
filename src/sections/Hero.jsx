@@ -81,6 +81,8 @@ export default function Hero() {
 						<img
 							src={PORTRAIT_SRC}
 							alt={t("hero.portraitAlt")}
+							// React 18 only passes the lowercase attribute through to the DOM.
+							// eslint-disable-next-line react/no-unknown-property
 							fetchpriority="high"
 							className={`forge-image h-full w-auto max-w-full object-contain object-bottom ${
 								// .png cutout: fade the straight side cuts only in the lower 38% (where the coat touches the frame),

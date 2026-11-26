@@ -17,7 +17,7 @@ const id = {
 	folders: {
 		toolsTitle: "Alat yang saya gunakan.",
 		projects: { title: "Proyek", meta: "Buka foldernya. Lihat detailnya.", open: "Buka folder Proyek" },
-		projectsBuilt: { title: "15+ proyek dibangun", meta: "Belajar dengan membangun, satu per satu.", open: "Buka folder proyek dibangun" },
+		certificates: { title: "Sertifikat", meta: "Bukti belajar, satu per satu.", open: "Buka folder Sertifikat" },
 		idea: { title: "Punya ide?", meta: "Mari wujudkan bersama.", open: "Buka folder Punya ide?" },
 		sheets: {
 			about: ["Kenalan sama Aditya", "Tentang"],

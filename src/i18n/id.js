@@ -83,7 +83,6 @@ const id = {
 	},
 	footer: {
 		rights: "Hak cipta dilindungi.",
-		designBy: "Design by",
 		trademarks: "Merek dagang pihak ketiga adalah milik pemiliknya masing-masing.",
 	},
 };

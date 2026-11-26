@@ -83,7 +83,6 @@ const en = {
 	},
 	footer: {
 		rights: "All rights reserved.",
-		designBy: "Design by",
 		trademarks: "Third-party trademarks belong to their respective owners.",
 	},
 };

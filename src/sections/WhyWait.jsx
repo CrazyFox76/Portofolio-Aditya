@@ -8,14 +8,12 @@ import { useLanguage } from "../i18n/LanguageContext";
  *   0.04-0.155 the "?" marks trickle out one by one, then flood to the right
  *   0.28-0.34  question gives way to the "Call me now" statement; floating logos pop in
  *   0.62-0.70  statement greys out
- *   0.70-0.80  the phone tile flies into the contact panel, which fades in
+ *   0.70-0.80  the statement leaves and the contact panel fades in
  */
 
-// Contact details shown on the page. TODO(Aditya): replace PHONE with your WhatsApp number.
-export const CONTACT = {
+// Fallback address for the mailto: route when no Web3Forms key is configured (not shown on the page).
+const CONTACT = {
 	email: "aditpratama77788@gmail.com",
-	phoneDisplay: "+62 812 0000 0000",
-	phoneE164: "6281200000000",
 };
 
 // Floating logos around the statement (positions and sizes follow the wahba layout).
@@ -51,14 +49,6 @@ function PhoneGlyph() {
 	);
 }
 
-function WhatsAppGlyph() {
-	return (
-		<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-			<path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z" />
-		</svg>
-	);
-}
-
 function useReducedMotionFlag() {
 	const [reduced, setReduced] = useState(false);
 	useEffect(() => {
@@ -86,7 +76,6 @@ export default function WhyWait() {
 	const brandsRef = useRef(null);
 	const contactRef = useRef(null);
 	const phoneSrcRef = useRef(null);
-	const phoneDstRef = useRef(null);
 	const phoneFlyRef = useRef(null);
 
 	useLayoutEffect(() => {
@@ -104,7 +93,6 @@ export default function WhyWait() {
 			};
 			rects = {
 				src: r(phoneSrcRef.current),
-				dst: r(phoneDstRef.current),
 				timeLeft: r(timeRef.current).x,
 				markW: punctRef.current.scrollWidth / MARKS,
 			};
@@ -150,19 +138,14 @@ export default function WhyWait() {
 			contact.style.visibility = cIn > 0.01 ? "visible" : "hidden";
 			contact.style.transform = `translateY(${lerp(30, 0, cIn)}px)`;
 
-			// The phone tile flies from the statement into the contact panel.
+			// The phone tile rides with the statement and leaves with it (there is no phone number to land on).
 			if (rects) {
-				const fly = seg(p, 0.7, 0.8);
-				const visible = sIn > 0.01;
-				const x = lerp(rects.src.x, rects.dst.x, fly);
-				const y = lerp(rects.src.y, rects.dst.y, fly);
-				const w = lerp(rects.src.w, rects.dst.w, fly);
 				const el = phoneFlyRef.current;
-				el.style.opacity = visible ? Math.max(sIn, cIn) : 0;
-				el.style.width = `${w}px`;
-				el.style.height = `${w}px`;
-				el.style.fontSize = `${w / 0.64}px`;
-				el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${-8 * Math.sin(fly * Math.PI)}deg)`;
+				el.style.opacity = sIn * (1 - sOut);
+				el.style.width = `${rects.src.w}px`;
+				el.style.height = `${rects.src.w}px`;
+				el.style.fontSize = `${rects.src.w / 0.64}px`;
+				el.style.transform = `translate3d(${rects.src.x}px, ${rects.src.y + lerp(30, 0, sIn)}px, 0)`;
 			}
 		};
 
@@ -298,21 +281,6 @@ export default function WhyWait() {
 							<br />
 							{c.titleBottom}
 						</h2>
-						<div className="contact-phone-row">
-							<span ref={phoneDstRef} className="contact-phone-destination" aria-hidden="true" />
-							<a className="contact-number" href={`tel:+${CONTACT.phoneE164}`}>
-								{CONTACT.phoneDisplay}
-							</a>
-							<a
-								className="contact-whatsapp"
-								href={`https://wa.me/${CONTACT.phoneE164}`}
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label={c.whatsapp}
-							>
-								<WhatsAppGlyph />
-							</a>
-						</div>
 					</div>
 
 					<form className="contact-form" onSubmit={onSubmit}>

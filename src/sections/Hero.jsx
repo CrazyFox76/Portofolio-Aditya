@@ -8,7 +8,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 const PORTRAIT_SRC = "/portrait.png";
 
 const NAME_CLASS =
-	"absolute z-[1] block select-none whitespace-nowrap font-bold leading-[1.15] tracking-[-0.06em] text-[#b6c6bc] text-[14vw] md:text-[clamp(90px,min(13vw,26svh),230px)]";
+	"absolute z-[1] block select-none whitespace-nowrap font-bold leading-[1.15] tracking-[-0.06em] text-[#b6c6bc] text-[17vw] md:text-[clamp(90px,min(13vw,26svh),230px)]";
 
 export default function Hero() {
 	const { t } = useLanguage();
@@ -50,21 +50,21 @@ export default function Hero() {
 
 	return (
 		<section id="Home" className="overflow-hidden px-3 pt-3">
-			<div ref={stageRef} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave} className="forge-stage relative h-[max(460px,67.5svh)] overflow-hidden rounded-[22px_22px_32px_32px] bg-[#6f4e37] bg-[linear-gradient(115deg,#1b1714,#513824_53%,#35271d)]">
+			<div ref={stageRef} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave} className="forge-stage relative h-[max(460px,67.5svh)] max-md:h-[86svh] overflow-hidden rounded-[22px_22px_32px_32px] bg-[#6f4e37] bg-[linear-gradient(115deg,#1b1714,#513824_53%,#35271d)]">
 				<div className="hero-studio-light" aria-hidden="true" />
 				<h1 className="sr-only">
 					{t("hero.firstName")} {t("hero.lastName")}
 				</h1>
 
-				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-top left-[14%] top-[24%] max-md:top-[18%]`} {...rise(0.1)}>
+				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-top left-[14%] top-[24%] max-md:left-[6%] max-md:top-[9%]`} {...rise(0.1)}>
 					{t("hero.firstName")}
 				</motion.span>
-				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-bottom right-[6%] top-[44%] max-md:top-[30%]`} {...rise(0.2)}>
+				<motion.span aria-hidden="true" className={`${NAME_CLASS} forge-title-bottom right-[6%] top-[44%] max-md:right-[6%] max-md:top-[20%]`} {...rise(0.2)}>
 					{t("hero.lastName")}
 				</motion.span>
 
 				{/* Wrappers hold the centering translate; framer-motion animates the inner element's transform. */}
-				<div className="absolute bottom-[-20px] left-1/2 z-[2] flex h-[100%] w-[60%] -translate-x-1/2 justify-center max-md:w-[110%]">
+				<div className="absolute bottom-[-20px] left-1/2 z-[2] flex h-[100%] w-[60%] -translate-x-1/2 justify-center max-md:h-[66%] max-md:w-[110%]">
 					<div ref={artRef} className="forge-art-inner">
 					<motion.div
 						className="portrait-depth-surface flex justify-center"

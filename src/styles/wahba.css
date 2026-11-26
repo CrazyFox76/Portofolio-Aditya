@@ -1734,3 +1734,16 @@
 	opacity: 0.6;
 	cursor: progress;
 }
+
+/* Phones: folder label sits at the bottom-left of the glass pocket (wahba's bottom-left placement). */
+@media (max-width: 767px) {
+	.hero-folder-row .gf-label {
+		left: 24px;
+		right: 24px;
+		bottom: 26px;
+		max-width: none;
+	}
+	.hero-folder-row .gf-title {
+		font-size: 22px;
+	}
+}

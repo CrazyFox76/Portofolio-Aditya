@@ -18,6 +18,14 @@ export default function TechFolder({ title, items }) {
 	const [entered, setEntered] = useState(false);
 	const [hover, setHover] = useState(false);
 	const [active, setActive] = useState(-1);
+	const [width, setWidth] = useState(420);
+	useEffect(() => {
+		const ro = new ResizeObserver(([e]) => setWidth(e.contentRect.width));
+		ro.observe(ref.current);
+		return () => ro.disconnect();
+	}, []);
+	// Narrow cards (phones) get a tighter gap so the row of logos stays inside the card.
+	const gap = Math.min(GAP, (width - TILE - 20) / Math.max(1, items.length - 1));
 
 	useEffect(() => {
 		const io = new IntersectionObserver(
@@ -78,7 +86,7 @@ export default function TechFolder({ title, items }) {
 			<div className="pointer-events-none absolute inset-0">
 				{items.map((item, i) => {
 					const o = i - mid;
-					const x = o * (hover ? GAP + 4 : GAP);
+					const x = o * (hover ? gap + 4 : gap);
 					// Resting fan: tiles rise slightly to the right and peek above the pocket; hover spreads them.
 					// Gentle arc: centre logos sit a little higher than the ends; hover lifts the whole row.
 					const y = (hover ? -8 : 0) + o * o * 1.2;
@@ -97,7 +105,7 @@ export default function TechFolder({ title, items }) {
 								width: TILE,
 								height: TILE,
 								marginLeft: -TILE / 2,
-								zIndex: lifted ? 15 : i,
+								zIndex: lifted ? 25 : i, // above the pocket (z-20) so its tooltip below stays visible
 								opacity: entered ? 1 : 0,
 								transform: entered
 									? `translate3d(${x}px, ${ty}px, 0) rotate(${tr}deg) scale(${lifted ? 1.08 : 1})`
@@ -125,13 +133,13 @@ export default function TechFolder({ title, items }) {
 								</span>
 							</div>
 							<span
-								className="pointer-events-none absolute bottom-full left-1/2 mb-2.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-xs font-medium leading-4 backdrop-blur-[8px]"
+								className="pointer-events-none absolute left-1/2 top-full z-30 mt-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-xs font-medium leading-4 backdrop-blur-[8px]"
 								style={{
-									background: "rgba(0,0,0,.55)",
-									borderColor: "rgba(255,255,255,.08)",
+									background: "rgba(0,0,0,.75)",
+									borderColor: "rgba(255,255,255,.14)",
 									color: "#fff",
 									opacity: lifted ? 1 : 0,
-									transform: `translateX(-50%) translateY(${lifted ? 0 : 6}px)`,
+									transform: `translateX(-50%) translateY(${lifted ? 0 : -6}px)`, // drops in below the logo, inside the card
 									transition: `opacity .25s ease, transform .35s ${EASE}`,
 								}}
 							>

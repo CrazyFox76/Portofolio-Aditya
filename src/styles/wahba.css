@@ -1269,3 +1269,468 @@
 		opacity: 0;
 	}
 }
+
+/* ---- why waste time → call me now → contact (from the wahba .why-wait / .contact-panel rules) ---- */
+.why-wait {
+	color: #1d1d1f;
+	background: #fff;
+	height: 410svh;
+	position: relative;
+}
+.why-wait-stage {
+	isolation: isolate;
+	place-items: center;
+	height: 100svh;
+	padding: 90px 5vw 55px;
+	display: grid;
+	position: sticky;
+	top: 0;
+	overflow: hidden;
+}
+.why-wait-marks {
+	z-index: -1;
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+}
+.why-wait-mark {
+	color: #1d1d1f;
+	opacity: 0.055;
+	user-select: none;
+	font-size: 125vh;
+	font-weight: 700;
+	line-height: 1;
+	position: absolute;
+}
+.why-wait-mark-one {
+	top: -40vh;
+	left: -22vw;
+}
+.why-wait-mark-two {
+	font-size: 145vh;
+	bottom: -53vh;
+	right: -16vw;
+}
+.why-wait-mark-three {
+	opacity: 0.035;
+	font-size: 110vh;
+	top: -88vh;
+	left: 37%;
+}
+.why-wait-question {
+	text-align: center;
+	color: #1d1d1f;
+	width: 100%;
+	margin: 0;
+	font-size: clamp(54px, 7.5vw, 125px);
+	font-weight: 700;
+	letter-spacing: -0.05em;
+	line-height: 1.35;
+	opacity: 0;
+}
+.why-wait-question > span {
+	display: block;
+}
+.why-wait-question > .why-wait-time {
+	width: max-content;
+	margin-inline: auto;
+	position: relative;
+}
+.why-wait-punctuation {
+	white-space: nowrap;
+	letter-spacing: -0.1em;
+	width: max-content;
+	padding-inline-start: 0.08em;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 100%;
+}
+.why-wait-punctuation > span {
+	opacity: 0;
+	display: inline-block;
+}
+.why-wait-statement {
+	opacity: 0;
+	place-items: center;
+	padding: 90px 5vw 55px;
+	display: grid;
+	position: absolute;
+	inset: 0;
+	z-index: 3;
+	pointer-events: none;
+}
+.why-wait-statement h3 {
+	text-align: center;
+	margin: 0;
+	font-size: clamp(38px, 5.1vw, 85px);
+	font-weight: 700;
+	line-height: 1.8;
+	z-index: 1;
+	position: relative;
+	color: inherit;
+}
+.why-wait-call {
+	font-size: 1.4em;
+	letter-spacing: -0.055em;
+	display: block;
+}
+.why-wait-call-label,
+.why-wait-now {
+	display: inline-block;
+}
+.why-wait-dots {
+	display: block;
+}
+.why-wait-phone-slot {
+	display: inline-block;
+	vertical-align: -0.025em;
+	width: 0.64em;
+	height: 0.64em;
+	margin-left: 0.17em;
+}
+.why-wait-phone-fly {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 6;
+	opacity: 0;
+	pointer-events: none;
+	background: linear-gradient(145deg, #edfff4, #d5f7e2);
+	border-radius: 0.19em;
+	box-shadow:
+		inset 0 1px 1px #fff,
+		inset 0 -1px 2px #259e4320,
+		0 3px 8px #0d643d12;
+	will-change: transform;
+}
+.why-wait-phone {
+	position: absolute;
+	width: 0.3em;
+	height: 0.3em;
+	top: 0.17em;
+	left: 0.17em;
+}
+.floating-brands {
+	pointer-events: none;
+	z-index: 0;
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	-webkit-mask-image: radial-gradient(44% 29% at 50% 51%, #0000 50%, #000 100%);
+	mask-image: radial-gradient(44% 29% at 50% 51%, #0000 50%, #000 100%);
+}
+.floating-brand-position {
+	width: calc(clamp(65px, 6.3vw, 120px) * var(--float-size));
+	aspect-ratio: 1;
+	margin-left: calc(clamp(65px, 6.3vw, 120px) * var(--float-size) * -0.5);
+	margin-top: calc(clamp(65px, 6.3vw, 120px) * var(--float-size) * -0.5);
+	position: absolute;
+}
+.floating-brand-motion {
+	width: 100%;
+	height: 100%;
+	display: block;
+	animation: brand-float 7s ease-in-out infinite alternate;
+}
+@keyframes brand-float {
+	from {
+		transform: translate3d(0, -8px, 0) rotate(-3deg);
+	}
+	to {
+		transform: translate3d(0, 8px, 0) rotate(3deg);
+	}
+}
+.floating-brand-motion img {
+	object-fit: contain;
+	width: 62%;
+	height: 62%;
+	margin: 19%;
+	transform: rotate(var(--float-angle));
+	filter: drop-shadow(0 10px 12px #172b3d16);
+	display: block;
+}
+.contact-panel {
+	z-index: 2;
+	color: #1d1d1f;
+	background: #fff;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+	align-content: safe center;
+	align-items: center;
+	gap: 8vw;
+	padding: 100px max(6vw, 24px) max(30px, env(safe-area-inset-bottom));
+	display: grid;
+	position: absolute;
+	inset: 0;
+	visibility: hidden;
+	opacity: 0;
+	overflow: hidden auto;
+	scrollbar-width: thin;
+}
+.contact-panel,
+.contact-details,
+.contact-form,
+.contact-form label {
+	min-width: 0;
+}
+.contact-eyebrow {
+	letter-spacing: 0.08em;
+	color: #818782;
+	margin: 0 0 25px;
+	font-size: 11px;
+}
+.contact-details h2 {
+	letter-spacing: -0.035em;
+	color: #1d1d1f;
+	margin: 0 0 40px;
+	font-size: clamp(38px, 4.5vw, 78px);
+	font-weight: 700;
+	line-height: 1.3;
+}
+.contact-phone-row {
+	justify-content: flex-start;
+	align-items: center;
+	gap: clamp(8px, 1vw, 16px);
+	margin-block: 0 20px;
+	display: flex;
+}
+.contact-phone-destination {
+	flex: none;
+	width: 58px;
+	height: 58px;
+	display: block;
+}
+.contact-number {
+	letter-spacing: -0.035em;
+	white-space: nowrap;
+	color: inherit;
+	font-size: clamp(17px, 1.85vw, 32px);
+	font-weight: 600;
+	text-decoration: none;
+}
+.contact-whatsapp {
+	color: #22b866;
+	border-radius: 50%;
+	flex: none;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	transition: background 0.2s;
+	display: grid;
+}
+.contact-whatsapp svg {
+	width: 23px;
+	height: 23px;
+}
+.contact-whatsapp:hover {
+	background: #e8f8ee;
+}
+.contact-email {
+	letter-spacing: 0.025em;
+	color: #717673;
+	overflow-wrap: anywhere;
+	font-size: clamp(12px, 1.2vw, 18px);
+	text-decoration: none;
+	display: inline-block;
+}
+.contact-email:hover {
+	color: #1d1d1f;
+}
+.contact-form {
+	justify-self: end;
+	gap: 24px;
+	width: 100%;
+	max-width: 540px;
+	display: grid;
+}
+.contact-form label {
+	color: #535954;
+	gap: 9px;
+	font-size: 13px;
+	font-weight: 500;
+	display: grid;
+}
+.contact-form input,
+.contact-form textarea {
+	color: #1d1d1f;
+	width: 100%;
+	min-width: 0;
+	font: inherit;
+	background: 0 0;
+	border: 0;
+	border-bottom: 1px solid #d8ded9;
+	border-radius: 0;
+	outline: none;
+	padding: 9px 0 13px;
+	font-size: 17px;
+	transition: border-color 0.2s;
+}
+.contact-form textarea {
+	resize: vertical;
+	min-height: 88px;
+	max-height: 160px;
+}
+.contact-form :is(input, textarea):focus {
+	border-color: #22b866;
+}
+.contact-form :is(input, textarea)::placeholder {
+	color: #a0a6a1;
+	opacity: 1;
+}
+.contact-form button {
+	color: #fff;
+	font: inherit;
+	cursor: pointer;
+	background: #1d1d1f;
+	border: 0;
+	border-radius: 100px;
+	justify-content: space-between;
+	align-items: center;
+	gap: 35px;
+	width: 100%;
+	padding: 16px 23px;
+	font-size: 16px;
+	display: flex;
+}
+.contact-form button:hover {
+	background: #303833;
+}
+.contact-form-note {
+	color: #878d88;
+	margin: -12px 0 0;
+	font-size: 11px;
+	line-height: 1.6;
+}
+.contact-panel a:focus-visible,
+.contact-form button:focus-visible {
+	outline-offset: 5px;
+	outline: 2px solid #22b866;
+}
+@media (max-width: 900px) {
+	.contact-panel {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 24px;
+		padding: 90px 24px 30px;
+	}
+	.contact-form {
+		gap: 16px;
+		max-width: none;
+	}
+	.contact-details h2 {
+		margin-bottom: 18px;
+		font-size: clamp(28px, 5vw, 42px);
+	}
+	.contact-eyebrow {
+		margin-bottom: 12px;
+	}
+	.contact-phone-destination {
+		width: 44px;
+		height: 44px;
+	}
+	.contact-number {
+		font-size: clamp(17px, 4.7vw, 25px);
+	}
+}
+@media (max-width: 767px) {
+	.why-wait-question {
+		font-size: clamp(34px, 7vw, 56px);
+	}
+	.why-wait-statement h3 {
+		font-size: clamp(25px, 6vw, 44px);
+	}
+	.why-wait-call {
+		font-size: 1.45em;
+	}
+	.why-wait-mark-one {
+		left: -65vw;
+	}
+	.why-wait-mark-two {
+		right: -75vw;
+	}
+	.why-wait-stage,
+	.why-wait-statement {
+		padding: 85px 5vw 30px;
+	}
+	.why-wait-dots {
+		margin-top: 20px;
+		font-size: clamp(20px, 5vw, 38px);
+		line-height: 1.5;
+		text-wrap: balance;
+	}
+	.floating-brand-position {
+		width: calc(58px * var(--float-size));
+		margin-left: calc(-29px * var(--float-size));
+		margin-top: calc(-29px * var(--float-size));
+	}
+	.floating-brand-position:nth-child(3n) {
+		display: none;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.floating-brand-motion {
+		animation: none;
+	}
+}
+/* Reduced motion: no choreography, everything stacked and visible. */
+.why-wait[data-reduced] {
+	height: auto;
+}
+.why-wait[data-reduced] .why-wait-stage {
+	position: relative;
+	height: auto;
+	min-height: 100svh;
+	gap: 70px;
+	padding-block: 120px;
+}
+.why-wait[data-reduced] :is(.why-wait-question, .why-wait-statement, .contact-panel) {
+	opacity: 1;
+	visibility: visible;
+	position: relative;
+	inset: auto;
+}
+.why-wait[data-reduced] .why-wait-punctuation > span {
+	opacity: 1;
+}
+.why-wait[data-reduced] .why-wait-phone-fly {
+	display: none;
+}
+
+/* ---- footer (wahba .site-copyright) ---- */
+.site-copyright {
+	z-index: 1;
+	padding: 24px max(20px, 5vw) max(24px, env(safe-area-inset-bottom));
+	color: #c2cbc6;
+	text-align: center;
+	background: #090b0a;
+	border-top: 1px solid #ffffff14;
+	position: relative;
+}
+.site-copyright p {
+	text-wrap: pretty;
+	max-width: 760px;
+	margin: 0 auto;
+	font-size: 12px;
+	line-height: 1.8;
+}
+.site-copyright .site-copyright-owner {
+	color: #e1e8e3;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 4px 10px;
+	margin-bottom: 5px;
+	font-weight: 600;
+	display: flex;
+}
+.site-copyright .site-copyright-trademarks {
+	color: #8f9c94;
+	margin-top: 4px;
+	font-size: 11px;
+}
+.site-copyright a {
+	color: #b6c6bc;
+	text-underline-offset: 3px;
+}
+.contact-form button:disabled {
+	opacity: 0.6;
+	cursor: progress;
+}

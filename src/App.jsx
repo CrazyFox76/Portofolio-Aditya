@@ -3,13 +3,13 @@ import "./index.css";
 import Hero from "./sections/Hero";
 import FolderRow from "./sections/FolderRow";
 import BrandStory from "./sections/BrandStory";
+import WhyWait from "./sections/WhyWait";
 import About from "./Pages/About";
 import AnimatedBackground from "./components/Background";
 import Dock from "./components/Dock";
 import Footer from "./components/Footer";
 import { LanguageProvider } from "./i18n/LanguageContext";
 import Portofolio from "./Pages/Portofolio";
-import ContactPage from "./Pages/Contact";
 import ProjectDetails from "./components/ProjectDetail";
 import NotFoundPage from "./Pages/404";
 import { supabase } from "./supabase";
@@ -26,9 +26,9 @@ const LandingPage = () => (
         <AnimatedBackground />
         <About />
         <Portofolio />
-        <ContactPage />
       </>
     )}
+    <WhyWait />
     <Footer />
   </>
 );

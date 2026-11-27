@@ -55,6 +55,26 @@ const en = {
 			{ prefix: "and", base: "How", label: "And how?" },
 		],
 	},
+	journey: {
+		eyebrow: "Experience & education",
+		titleTop: "The journey",
+		titleBottom: "so far.",
+		intro: "A fresh graduate who learns fast and likes to be useful: from serving customers and running day-to-day operations to digital marketing, data entry and IT studies.",
+		workTitle: "Experience",
+		work: [
+			{ when: "Aug – Sep 2026", role: "Barista (Booth Keeper)", org: "Morogo Coffee", text: "Served customers, prepared drinks to order, managed ingredient stock and kept the booth clean and tidy so service stayed fast and consistent." },
+			{ when: "Apr – Jul 2026", role: "Digital Marketing Intern", org: "Cakrawala Educentre", text: "Ran Meta Ads campaigns, managed marketplace admin, submitted content to Google for SEO, handled digital archiving and designed event posters." },
+			{ when: "Jan – Apr 2026", role: "Intern", org: "Bank DKI Jakarta", text: "Entered and archived customer files digitally: scanning, verifying and keying data into internal systems with high accuracy, preparing documents by procedure and coordinating with the team to speed up verification." },
+			{ when: "Jan 2024 – Jan 2025", role: "Coffee stall (family business)", org: "Warkop Warmindo", text: "Supported my mother's coffee stall: served customers, prepared drinks, managed stock and supplies and kept the place clean for fast, consistent daily service." },
+		],
+		educationTitle: "Education",
+		education: [
+			{ when: "2024 – present", role: "Informatics", org: "STIKOM El Rahma", text: "Server administration: running servers for web, file and mail services and databases." },
+			{ when: "2020 – 2023", role: "Computer & Network Engineering", org: "SMK Mandalahayu 2", text: "Computer assembly and installation: understanding hardware, building PCs and laptops, and installing Windows/Linux and application software." },
+		],
+		skillsTitle: "What I bring",
+		skills: ["Time management", "Teamwork", "Attention to detail", "Problem solving", "Indonesian & English"],
+	},
 	whyWait: {
 		label: "Why waste time?",
 		question: "Why waste",

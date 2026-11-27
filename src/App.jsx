@@ -6,6 +6,7 @@ import Hero from "./sections/Hero";
 import FolderRow from "./sections/FolderRow";
 import BrandStory from "./sections/BrandStory";
 import WhyWait from "./sections/WhyWait";
+import Journey from "./sections/Journey";
 import NotFoundPage from "./Pages/404";
 import { LanguageProvider } from "./i18n/LanguageContext";
 
@@ -15,6 +16,7 @@ const LandingPage = () => (
     <Hero />
     <FolderRow />
     <BrandStory />
+    <Journey />
     <WhyWait />
     <Footer />
   </>

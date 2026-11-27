@@ -2,7 +2,7 @@ import GlassFolder from "../components/GlassFolder";
 import TechFolder from "../components/TechFolder";
 import { useLanguage } from "../i18n/LanguageContext";
 
-const CV_URL = "https://drive.google.com/file/d/1sHFfWWKaJ71aYx7htaa3DDYQFMHrhH-0/view?usp=drivesdk";
+const CV_URL = "https://drive.google.com/file/d/1F6Mk_aczzJbOTUyLMlNha1gtKvY4VRjj/view?usp=drivesdk";
 
 // Logos: Simple Icons SVGs (CC0) in public/icons/.
 // Logos shown in their own brand colours (no tile). GitHub's mark is black, so it is drawn white on the dark card.

@@ -2,11 +2,10 @@ import { FilesIcon, SettingsIcon, MapsIcon, ContactsIcon, MessagesIcon } from ".
 import { useLanguage } from "../i18n/LanguageContext";
 
 // Measurements: design-system/hero-spec.md ("Dock header").
-// Anchors point at the current sections; "experience" shares #identity until its own section exists.
 const ITEMS = [
 	{ key: "projects", href: "#tools", Icon: FilesIcon },
 	{ key: "skills", href: "#identity", Icon: SettingsIcon },
-	{ key: "experience", href: "#identity", Icon: MapsIcon },
+	{ key: "experience", href: "#experience", Icon: MapsIcon },
 	{ key: "about", href: "#Home", Icon: ContactsIcon },
 	{ key: "contact", href: "#Contact", Icon: MessagesIcon },
 ];

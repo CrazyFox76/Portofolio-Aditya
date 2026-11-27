@@ -55,6 +55,26 @@ const id = {
 			{ prefix: "dan", base: "Bagaimana", label: "Dan bagaimana?" },
 		],
 	},
+	journey: {
+		eyebrow: "Pengalaman & pendidikan",
+		titleTop: "Perjalanan",
+		titleBottom: "sejauh ini.",
+		intro: "Lulusan baru yang cepat belajar dan senang berguna: dari melayani pelanggan dan menjalankan operasional harian, sampai digital marketing, input data, dan kuliah informatika.",
+		workTitle: "Pengalaman",
+		work: [
+			{ when: "Agu – Sep 2026", role: "Barista (Penjaga Booth)", org: "Morogo Coffee", text: "Melayani pelanggan, menyiapkan dan menyajikan minuman sesuai pesanan, mengatur stok bahan, serta menjaga kebersihan dan kerapian booth agar pelayanan tetap cepat dan konsisten." },
+			{ when: "Apr – Jul 2026", role: "Digital Marketing Intern", org: "Cakrawala Educentre", text: "Menjalankan iklan Meta Ads, mengelola admin marketplace, mendaftarkan konten ke Google untuk SEO, melakukan pengarsipan digital, serta mendesain poster event." },
+			{ when: "Jan – Apr 2026", role: "Magang", org: "Bank DKI Jakarta", text: "Input data dan pengarsipan digital berkas nasabah: memindai, memverifikasi, dan memasukkan data ke sistem internal dengan teliti, menyiapkan dokumen sesuai prosedur, dan berkoordinasi dengan tim untuk mempercepat verifikasi." },
+			{ when: "Jan 2024 – Jan 2025", role: "Kedai kopi (usaha keluarga)", org: "Warkop Warmindo", text: "Mendukung operasional warkop milik ibu: melayani pelanggan, menyiapkan minuman, mengatur stok dan bahan baku, serta menjaga kebersihan agar layanan harian cepat dan konsisten." },
+		],
+		educationTitle: "Pendidikan",
+		education: [
+			{ when: "2024 – sekarang", role: "Informatika", org: "STIKOM El Rahma", text: "Administrasi server: mengelola server untuk layanan web, file, mail, dan basis data." },
+			{ when: "2020 – 2023", role: "Teknik Komputer & Jaringan", org: "SMK Mandalahayu 2", text: "Instalasi dan perakitan komputer: memahami hardware, merakit PC/laptop, serta menginstal Windows/Linux dan perangkat lunak aplikasi." },
+		],
+		skillsTitle: "Yang saya bawa",
+		skills: ["Manajemen waktu", "Kerja sama tim", "Ketelitian", "Pemecahan masalah", "Bahasa Indonesia & Inggris"],
+	},
 	whyWait: {
 		label: "Kenapa buang waktu?",
 		question: "Kenapa buang",

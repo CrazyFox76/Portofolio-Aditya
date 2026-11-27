@@ -32,6 +32,13 @@ const FLOAT = [
 	["/icons/docker.svg", 95, 13, 0.55, -20],
 ];
 
+// wahba fades the logos near the headline with a radial mask (44% x 29% at 50% 51%, clear from 50% to 100%).
+// A mask over animated children forces a full repaint every frame, so the same fade is baked in per logo instead.
+const centerFade = (left, top) => {
+	const r = Math.hypot((left - 50) / 44, (top - 51) / 29);
+	return Math.min(1, Math.max(0, (r - 0.5) / 0.5)).toFixed(2);
+};
+
 const MARKS = 60;
 const clamp = (v) => Math.min(1, Math.max(0, v));
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
@@ -255,7 +262,13 @@ export default function WhyWait() {
 							<span
 								key={i}
 								className="floating-brand-position"
-								style={{ left: `${left}%`, top: `${top}%`, "--float-size": size, "--float-angle": `${angle}deg` }}
+								style={{
+									left: `${left}%`,
+									top: `${top}%`,
+									opacity: centerFade(left, top),
+									"--float-size": size,
+									"--float-angle": `${angle}deg`,
+								}}
 							>
 								<span className="floating-brand-motion" style={{ animationDelay: `${-i * 0.7}s` }}>
 									<img alt="" src={src} loading="lazy" style={white ? { filter: "brightness(0) drop-shadow(0 10px 12px #172b3d16)" } : undefined} />

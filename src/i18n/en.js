@@ -101,6 +101,12 @@ const en = {
 		errorNote: "Couldn't send right now. Try again, or email me directly.",
 		mailSubject: "New project idea",
 	},
+	notFound: {
+		eyebrow: "Page not found",
+		title: "This page wandered off.",
+		text: "It may have moved, or it never existed. The good stuff is on the home page.",
+		cta: "Back to home",
+	},
 	footer: {
 		rights: "All rights reserved.",
 		trademarks: "Third-party trademarks belong to their respective owners.",

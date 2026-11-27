@@ -101,6 +101,12 @@ const id = {
 		errorNote: "Gagal mengirim. Coba lagi, atau email saya langsung.",
 		mailSubject: "Ide proyek baru",
 	},
+	notFound: {
+		eyebrow: "Halaman tidak ditemukan",
+		title: "Halaman ini nyasar.",
+		text: "Mungkin sudah dipindah, atau memang tidak pernah ada. Semua yang menarik ada di beranda.",
+		cta: "Kembali ke beranda",
+	},
 	footer: {
 		rights: "Hak cipta dilindungi.",
 		trademarks: "Merek dagang pihak ketiga adalah milik pemiliknya masing-masing.",

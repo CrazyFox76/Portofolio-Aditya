@@ -1,65 +1,41 @@
-import { Home, ArrowLeft } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { useLanguage } from "../i18n/LanguageContext";
 
+// 404 in the hero's vocabulary: the brown studio card, a huge sage "404", and the pill CTA back home.
 export default function NotFoundPage() {
-  const handleGoBack = () => {
-    window.history.back();
-  };
-
-  const handleGoHome = () => {
-    // In a real app, you would use your router's navigation
-    window.location.href = '/';
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
-      <div className="text-center">
-        {/* 404 Number */}
-        <div className="mb-8">
-          <h1 className="text-9xl font-bold text-gray-800 mb-4 animate-bounce">
-            404
-          </h1>
-          <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
-        </div>
-
-        {/* Message */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-semibold text-gray-700 mb-4">
-            Oops! Halaman Tidak Ditemukan
-          </h2>
-          <p className="text-lg text-gray-600 max-w-md mx-auto leading-relaxed">
-            Halaman yang Anda cari mungkin telah dipindahkan, dihapus, atau tidak pernah ada.
-          </p>
-        </div>
-
-        {/* Illustration */}
-        <div className="mb-8">
-          <div className="w-32 h-32 mx-auto bg-indigo-100 rounded-full flex items-center justify-center mb-6">
-            <div className="text-6xl">🔍</div>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={handleGoBack}
-            className="flex items-center gap-2 px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-          >
-            <ArrowLeft size={20} />
-            Kembali
-          </button>
-          
-          <button
-            onClick={handleGoHome}
-            className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-          >
-            <Home size={20} />
-            Beranda
-          </button>
-        </div>
-
-       
-
-      </div>
-    </div>
-  );
+	const { t } = useLanguage();
+	return (
+		<main className="min-h-svh bg-[#050608] p-3">
+			<section
+				className="relative isolate grid min-h-[calc(100svh-24px)] place-items-center overflow-hidden rounded-[22px_22px_32px_32px] bg-[#6f4e37] bg-[linear-gradient(115deg,#1b1714,#513824_53%,#35271d)] px-6 text-center"
+				aria-labelledby="nf-title"
+			>
+				<div className="hero-studio-light" aria-hidden="true" />
+				<div className="relative z-[1]">
+					<p className="mb-4 text-[11px] uppercase tracking-[0.08em] text-[#b6c6bc]/70">{t("notFound.eyebrow")}</p>
+					<h1
+						id="nf-title"
+						className="m-0 text-[clamp(120px,24vw,360px)] font-bold leading-[0.9] tracking-[-0.07em] text-[#b6c6bc]"
+					>
+						404
+					</h1>
+					<p className="mx-auto mt-6 max-w-[520px] text-[clamp(18px,1.8vw,26px)] font-semibold leading-snug tracking-[-0.03em] text-[#e5e4e2]">
+						{t("notFound.title")}
+					</p>
+					<p className="mx-auto mt-3 max-w-[460px] text-[15px] leading-relaxed text-[#e5e4e2]/70">{t("notFound.text")}</p>
+					<Link
+						to="/"
+						className="mt-10 inline-flex h-[52px] items-center gap-3 whitespace-nowrap rounded-full bg-[#b6c6bc] py-2 pl-2 pr-5 text-[13px] font-medium text-[#050608] outline-none transition-transform duration-300 hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white"
+					>
+						<span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#050608]">
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+								<path d="M7.5 3.5 3 8l4.5 4.5M3 8h10" stroke="#b6c6bc" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+							</svg>
+						</span>
+						<span>{t("notFound.cta")}</span>
+					</Link>
+				</div>
+			</section>
+		</main>
+	);
 }

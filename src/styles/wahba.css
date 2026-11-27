@@ -806,10 +806,10 @@
 	transform: translate(-50%, -50%);
 }
 .brand-emitter-a {
-	background: radial-gradient(#ffb96632 0%, #d6782920 15%, #b7530e0a 40%, #0000 68%);
+	background: radial-gradient(#ffb9668c 0%, #d6782957 18%, #b7530e26 42%, #0000 70%);
 }
 .brand-emitter-b {
-	background: radial-gradient(#8aeaff3b 0%, #4bbcff24 17%, #247ac30d 42%, #0000 68%);
+	background: radial-gradient(#8aeaff8f 0%, #4bbcff5c 18%, #247ac329 42%, #0000 70%);
 }
 .brand-questions-panel {
 	pointer-events: none;
@@ -1892,4 +1892,18 @@
 		transform: none;
 		transition: none;
 	}
+}
+
+.letter-tile-img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	user-select: none;
+}
+
+/* Bigger light pools so the lit letters wash the dark stage around them, as on wahba. */
+.brand-emitter-pool {
+	width: clamp(760px, 85vw, 1400px);
+	height: clamp(640px, 100vh, 1100px);
 }
